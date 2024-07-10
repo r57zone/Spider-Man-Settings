@@ -23,5 +23,9 @@ The application allows to change the game resolution, color depth and brightness
 ## Credits
 Many thanks to [Hemanshu Shekhar](https://community.pcgamingwiki.com/profile/9470-hemanshu-shekhar/) for finding the addresses to change the resolution and aspect ratio.
 
+## Known Issues
+1. At the edges, polygons are only rendered after a while on widescreen resolutions.
+2. The HUD is still stretched on widescreen resolutions.
+
 ## Feedback
 `r57zone[at]gmail.com`
