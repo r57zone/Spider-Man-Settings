@@ -6,8 +6,7 @@
 
 ## Скриншоты
 ![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/210d7c80-1fe8-445a-b407-5aaed1d22bc8)
-[![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/8e13f775-92bd-4f0f-b880-1cf60ed20a65)]https://github.com/r57zone/Spider-Man-Settings/assets/9499881/f0233845-e2f3-49a8-b8dd-90fd184c2cdf)
-
+[![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/8e13f775-92bd-4f0f-b880-1cf60ed20a65)](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/f0233845-e2f3-49a8-b8dd-90fd184c2cdf)
 
 ## Загрузка
 >Версия для XP, Vista, 7, 8.1, 10, 11.

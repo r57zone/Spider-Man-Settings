@@ -7,8 +7,7 @@ The application allows to change the game resolution, color depth and brightness
 
 ## Screenshots
 ![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/e9964b91-798e-400d-b4da-7f47ad10607e)
-[![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/8e13f775-92bd-4f0f-b880-1cf60ed20a65)]https://github.com/r57zone/Spider-Man-Settings/assets/9499881/f0233845-e2f3-49a8-b8dd-90fd184c2cdf)
-
+[![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/8e13f775-92bd-4f0f-b880-1cf60ed20a65)](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/f0233845-e2f3-49a8-b8dd-90fd184c2cdf)
 
 ## Download
 >Version for Windows XP, Vista, 7, 8.1, 10, 11.
