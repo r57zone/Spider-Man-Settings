@@ -1,2 +1,20 @@
-# Spider-Man-Settings
-Video settings for the game Spider-Man (2001) / Настройки видео для игры Spider-Man (2001)
+[![EN](https://user-images.githubusercontent.com/9499881/33184537-7be87e86-d096-11e7-89bb-f3286f752bc6.png)](https://github.com/r57zone/Spider-Man-Settings/) 
+[![RU](https://user-images.githubusercontent.com/9499881/27683795-5b0fbac6-5cd8-11e7-929c-057833e01fb1.png)](https://github.com/r57zone/Spider-Man-Settings/blob/master/README.RU.md)
+← Choose language | Выберите язык
+
+# Spider Man Settings
+The application allows to change the game resolution, color depth and brightness. Widescreen resolutions are supported.
+
+## Screenshots
+![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/e9964b91-798e-400d-b4da-7f47ad10607e)
+
+## Download
+>Version for Windows XP, Vista, 7, 8.1, 10, 11.
+
+**[Download](https://github.com/r57zone/Spider-Man-Settings/releases)**
+
+## Credits
+Many thanks to [Hemanshu Shekhar](https://community.pcgamingwiki.com/profile/9470-hemanshu-shekhar/) for finding the addresses to change the resolution and aspect ratio.
+
+## Feedback
+`r57zone[at]gmail.com`
