@@ -5,6 +5,11 @@
 # Spider Man Settings
 The application allows to change the game resolution, color depth and brightness. Widescreen resolutions are supported. Compatibility tested with US, RU (7wolf) versions.
 
+## Setup
+1. Extract [archive](https://github.com/r57zone/Spider-Man-Settings/releases) to the game folder.
+2. Run the application and select the desired parameters.
+3. Press the `Apply` button and the application will patch the required files.
+
 ## Screenshots
 ![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/e9964b91-798e-400d-b4da-7f47ad10607e)
 [![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/8e13f775-92bd-4f0f-b880-1cf60ed20a65)](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/f0233845-e2f3-49a8-b8dd-90fd184c2cdf)

@@ -188,6 +188,7 @@ begin
   end;
 
   Application.MessageBox(PChar(IDS_DONE), PChar(Caption), MB_ICONINFORMATION);
+  Close;
 end;
 
 procedure TMain.ExitBtnClick(Sender: TObject);

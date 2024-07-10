@@ -4,6 +4,11 @@
 # Spider Man Settings
 Приложение позволяет изменить разрешение игры, глубину цвета и яркость. Поддерживаются широкоформатные разрешения. Совместимость проверена с US, RU (7wolf) версиями.
 
+## Установка
+1. Извлеките [архив](https://github.com/r57zone/Spider-Man-Settings/releases) в папку с игрой.
+2. Запустите приложение и выберите нужные параметры.
+3. Нажмите кнопку `Применить` и приложение пропатчит нужные файлы.
+
 ## Скриншоты
 ![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/210d7c80-1fe8-445a-b407-5aaed1d22bc8)
 [![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/8e13f775-92bd-4f0f-b880-1cf60ed20a65)](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/f0233845-e2f3-49a8-b8dd-90fd184c2cdf)
