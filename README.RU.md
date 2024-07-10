@@ -2,10 +2,12 @@
 [![RU](https://user-images.githubusercontent.com/9499881/27683795-5b0fbac6-5cd8-11e7-929c-057833e01fb1.png)](https://github.com/r57zone/Spider-Man-Settings/blob/master/README.RU.md)
 
 # Spider Man Settings
-Приложение позволяет изменить разрешение игры, глубину цвета и яркость. Поддерживаются широкоформатные разрешения.
+Приложение позволяет изменить разрешение игры, глубину цвета и яркость. Поддерживаются широкоформатные разрешения. Совместимость проверена с US, RU (7wolf) версиями.
 
 ## Скриншоты
 ![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/210d7c80-1fe8-445a-b407-5aaed1d22bc8)
+[![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/8e13f775-92bd-4f0f-b880-1cf60ed20a65)]https://github.com/r57zone/Spider-Man-Settings/assets/9499881/f0233845-e2f3-49a8-b8dd-90fd184c2cdf)
+
 
 ## Загрузка
 >Версия для XP, Vista, 7, 8.1, 10, 11.
