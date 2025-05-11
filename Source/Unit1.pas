@@ -28,6 +28,7 @@ type
     procedure ApplyBtnClick(Sender: TObject);
     procedure ExitBtnClick(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -54,8 +55,8 @@ end;
 
 procedure TMain.AboutBtnClick(Sender: TObject);
 begin
-  Application.MessageBox(PChar(Caption + ' 1.0' + #13#10 +
-  IDS_LAST_UPDATE + ' 10.07.24' + #13#10#13#10 +
+  Application.MessageBox(PChar(Caption + ' 1.1' + #13#10 +
+  IDS_LAST_UPDATE + ' 11.05.25' + #13#10#13#10 +
   IDS_SPECIAL_THANKS + #13#10#13#10 +
   'https://r57zone.github.io' + #13#10 +
   'r57zone@gmail.com'), PChar(Caption), MB_ICONINFORMATION);
@@ -65,6 +66,9 @@ procedure TMain.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
+  DecimalSeparator:='.';
+  ThousandSeparator:=#0;
+
   if FileExists(ExtractFilePath(ParamStr(0)) + 'Resolutions.txt') then
     ResolutionsCB.Items.LoadFromFile(ExtractFilePath(ParamStr(0)) + 'Resolutions.txt');
 
@@ -128,12 +132,15 @@ procedure TMain.ApplyBtnClick(Sender: TObject);
 var
   ResStr: string;
 
-  AspectRatioByte, ColorDepthByte, BrightnessByte: Byte;
+  ColorDepthByte, BrightnessByte: Byte;
   FileStream: TFileStream;
 
   ResWidth, ResHeight: integer;
 
   HighByte, LowByte: Byte;
+
+  AspectRatioBytes: array[0..3] of Byte;
+  AspectRatioFloat: Single;
 begin
   if not FileExists(ExtractFilePath(ParamStr(0)) + 'SpideyPC.exe') then begin Application.MessageBox(PChar(IDS_GAME_NOT_FOUND), PChar(Caption), MB_ICONWARNING); Exit; end;
 
@@ -144,13 +151,17 @@ begin
   if Pos(' ', ResStr) > 0 then ResStr := Copy(ResStr, 1, Pos(' ', ResStr) - 1);
   ResWidth:=StrToInt(Copy(ResStr, 1, Pos('x', ResStr) - 1));
   ResHeight:=StrToInt(Copy(ResStr, Pos('x', ResStr) + 1, Length(ResStr) - Pos('x', ResStr)));
-  AspectRatioByte:=StrToInt('$' + Copy(AspectRatiosList.Strings[AspectRatiosCB.ItemIndex], Pos('=', AspectRatiosList.Strings[AspectRatiosCB.ItemIndex]) + 1, Length(AspectRatiosList.Strings[AspectRatiosCB.ItemIndex])) );
+
+  AspectRatioFloat:=StrToFloat(Trim(Copy(AspectRatiosList.Strings[AspectRatiosCB.ItemIndex], Pos('=', AspectRatiosList.Strings[AspectRatiosCB.ItemIndex]) + 1, Length(AspectRatiosList.Strings[AspectRatiosCB.ItemIndex]) )));
+
+  // float в массив байтов (little endian)
+  Move(AspectRatioFloat, AspectRatioBytes, SizeOf(AspectRatioBytes));
 
   // Aspect Ratio
   FileStream:=TFileStream.Create('SpideyPC.exe', fmOpenReadWrite);
   try
-    FileStream.Seek(StrToInt('$150066'), soBeginning);
-    FileStream.WriteBuffer(AspectRatioByte, SizeOf(Byte));
+    FileStream.Seek(StrToInt('$150064'), soBeginning);
+    FileStream.WriteBuffer(AspectRatioBytes, SizeOf(AspectRatioBytes));
   finally
     FileStream.Free;
   end;
@@ -199,6 +210,11 @@ end;
 procedure TMain.TrackBar1Change(Sender: TObject);
 begin
   BrightnessValLbl.Caption:=IntToStr(TrackBar1.Position);
+end;
+
+procedure TMain.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  AspectRatiosList.Free;
 end;
 
 end.
