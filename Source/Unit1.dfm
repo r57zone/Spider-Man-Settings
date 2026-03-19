@@ -92,7 +92,7 @@ object Main: TMain
         '16'
         '32')
     end
-    object TrackBar1: TTrackBar
+    object BrightnessTB: TTrackBar
       Left = 121
       Top = 112
       Width = 127
@@ -100,7 +100,7 @@ object Main: TMain
       Max = 9
       Position = 4
       TabOrder = 3
-      OnChange = TrackBar1Change
+      OnChange = BrightnessTBChange
     end
   end
   object ApplyBtn: TButton

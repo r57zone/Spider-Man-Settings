@@ -20,14 +20,14 @@ type
     ColorDepthLbl: TLabel;
     ColorDepthCB: TComboBox;
     BrightnessLbl: TLabel;
-    TrackBar1: TTrackBar;
+    BrightnessTB: TTrackBar;
     BrightnessValLbl: TLabel;
     procedure AboutBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ResolutionsCBChange(Sender: TObject);
     procedure ApplyBtnClick(Sender: TObject);
     procedure ExitBtnClick(Sender: TObject);
-    procedure TrackBar1Change(Sender: TObject);
+    procedure BrightnessTBChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
@@ -38,7 +38,7 @@ type
 var
   Main: TMain;
   AspectRatiosList: TStringList;
-  IDS_GAME_NOT_FOUND, IDS_DONE, IDS_ABOUT, IDS_LAST_UPDATE, IDS_SPECIAL_THANKS: string;
+  IDS_ASPECT_RATIO_AUTO, IDS_GAME_NOT_FOUND, IDS_DONE, IDS_ABOUT, IDS_LAST_UPDATE, IDS_SPECIAL_THANKS: string;
 
 implementation
 
@@ -69,22 +69,9 @@ begin
   DecimalSeparator:='.';
   ThousandSeparator:=#0;
 
-  if FileExists(ExtractFilePath(ParamStr(0)) + 'Resolutions.txt') then
-    ResolutionsCB.Items.LoadFromFile(ExtractFilePath(ParamStr(0)) + 'Resolutions.txt');
-
-  AspectRatiosList:=TStringList.Create;
-  if FileExists(ExtractFilePath(ParamStr(0)) + 'AspectRatios.txt') then
-    AspectRatiosList.LoadFromFile(ExtractFilePath(ParamStr(0)) + 'AspectRatios.txt');
-  for i:=0 to AspectRatiosList.Count - 1 do
-    AspectRatiosCB.Items.Add(Copy(AspectRatiosList.Strings[i], 1, Pos('=', AspectRatiosList.Strings[i]) - 1));
-  if ResolutionsCB.Items.Count > 0 then
-    ResolutionsCB.ItemIndex:=0;
-
-  if AspectRatiosCB.Items.Count > 0 then
-    AspectRatiosCB.ItemIndex:=0;
-
+  IDS_ASPECT_RATIO_AUTO:='Auto';
   IDS_GAME_NOT_FOUND:='The game "SpideyPC.exe" was not found.';
-  IDS_DONE:='Done.' + #13#10#13#10 + 'For the game to work correctly on new Windows' + #13#10 + 'you will need the dgVoodoo2 library and a frame limit of up to 30.';
+  IDS_DONE:='Done.' + #13#10#13#10 + 'For the game to work correctly on new Windows' + #13#10 + 'you will need the dgVoodoo2 library and a frame rate limit of 30 FPS (in the graphics card control panel).';
   IDS_ABOUT:='About...';
   IDS_LAST_UPDATE:='Last update:';
   IDS_SPECIAL_THANKS:='Many thanks to Hemanshu Shekhar' + #13#10 + 'for the addresses found.';
@@ -95,11 +82,12 @@ begin
     VideoGB.Caption:='Видео';
     ResLbl.Caption:='Разрешение:';
     AspectRatioLbl.Caption:='Соотношение сторон:';
+    IDS_ASPECT_RATIO_AUTO:='Авто';
     ColorDepthLbl.Caption:='Глубина цвета:';
     BrightnessLbl.Caption:='Яркость:';
 
     ApplyBtn.Caption:='Применить';
-    IDS_DONE:='Готово.' + #13#10#13#10 + 'Для корректной работы игры на новых Windows' + #13#10 + 'понадобится библиотека dgVoodoo2 и ограничение кадров до 30.';
+    IDS_DONE:='Готово.' + #13#10#13#10 + 'Для корректной работы игры на новых Windows' + #13#10 + 'понадобится библиотека dgVoodoo2 и ограничение кадров в 30 FPS (в панели управления видеокартой).';
     ExitBtn.Caption:='Выход';
 
     IDS_ABOUT:='О программе...';
@@ -107,14 +95,30 @@ begin
     IDS_SPECIAL_THANKS:='Большое спасибо Hemanshu Shekhar' + #13#10 + 'за найденные адреса.';
   end;
   Application.Title:=Caption;
+
+  if FileExists(ExtractFilePath(ParamStr(0)) + 'Resolutions.txt') then
+    ResolutionsCB.Items.LoadFromFile(ExtractFilePath(ParamStr(0)) + 'Resolutions.txt');
+
+  AspectRatiosList:=TStringList.Create;
+  if FileExists(ExtractFilePath(ParamStr(0)) + 'AspectRatios.txt') then
+    AspectRatiosList.LoadFromFile(ExtractFilePath(ParamStr(0)) + 'AspectRatios.txt');
+  AspectRatiosCB.Items.Add(IDS_ASPECT_RATIO_AUTO);
+  for i:=0 to AspectRatiosList.Count - 1 do
+    AspectRatiosCB.Items.Add(Copy(AspectRatiosList.Strings[i], 1, Pos('=', AspectRatiosList.Strings[i]) - 1));
+
+  if ResolutionsCB.Items.Count > 0 then
+    ResolutionsCB.ItemIndex:=0;
+
+  if AspectRatiosCB.Items.Count > 0 then
+    AspectRatiosCB.ItemIndex:=0;
 end;
 
 procedure TMain.ResolutionsCBChange(Sender: TObject);
-var
-  AspectRatiosIndex: Integer;
-  ResText, AspectRatiosText: string;
+//var
+  //AspectRatiosIndex: Integer;
+  //ResText, AspectRatiosText: string;
 begin
-  if ResolutionsCB.ItemIndex = -1 then Exit;
+  {if ResolutionsCB.ItemIndex = -1 then Exit;
 
   ResText:=ResolutionsCB.Items[ResolutionsCB.ItemIndex];
 
@@ -125,7 +129,7 @@ begin
   AspectRatiosIndex:=AspectRatiosCB.Items.IndexOf(AspectRatiosText);
 
   if AspectRatiosIndex <> -1 then
-    AspectRatiosCB.ItemIndex:=AspectRatiosIndex;
+    AspectRatiosCB.ItemIndex:=AspectRatiosIndex;}
 end;
 
 procedure TMain.ApplyBtnClick(Sender: TObject);
@@ -152,7 +156,10 @@ begin
   ResWidth:=StrToInt(Copy(ResStr, 1, Pos('x', ResStr) - 1));
   ResHeight:=StrToInt(Copy(ResStr, Pos('x', ResStr) + 1, Length(ResStr) - Pos('x', ResStr)));
 
-  AspectRatioFloat:=StrToFloat(Trim(Copy(AspectRatiosList.Strings[AspectRatiosCB.ItemIndex], Pos('=', AspectRatiosList.Strings[AspectRatiosCB.ItemIndex]) + 1, Length(AspectRatiosList.Strings[AspectRatiosCB.ItemIndex]) )));
+  if AspectRatiosCB.ItemIndex = 0 then // Auto - 0
+    AspectRatioFloat := (4.0 * ResHeight) / (3.0 * ResWidth)
+  else
+    AspectRatioFloat:=StrToFloat(Trim(Copy(AspectRatiosList.Strings[AspectRatiosCB.ItemIndex - 1], Pos('=', AspectRatiosList.Strings[AspectRatiosCB.ItemIndex - 1]) + 1, Length(AspectRatiosList.Strings[AspectRatiosCB.ItemIndex - 1]) )));
 
   // float в массив байтов (little endian)
   Move(AspectRatioFloat, AspectRatioBytes, SizeOf(AspectRatioBytes));
@@ -162,6 +169,8 @@ begin
   try
     FileStream.Seek(StrToInt('$150064'), soBeginning);
     FileStream.WriteBuffer(AspectRatioBytes, SizeOf(AspectRatioBytes));
+
+    // Optiomization aspect ratio ???
   finally
     FileStream.Free;
   end;
@@ -187,12 +196,16 @@ begin
     FileStream.Seek(5, soBeginning);
     FileStream.WriteBuffer(HighByte, SizeOf(Byte));
 
+    // Color depth
     FileStream.Seek(8, soBeginning);
-    ColorDepthByte := StrToInt('$' + IntToHex(StrToInt(ColorDepthCB.Items.Strings[ColorDepthCB.ItemIndex]), 2));
+    ColorDepthByte:=StrToInt(ColorDepthCB.Items[ColorDepthCB.ItemIndex]);
+    //ColorDepthByte:=StrToInt('$' + IntToHex(StrToInt(ColorDepthCB.Items.Strings[ColorDepthCB.ItemIndex]), 2));
     FileStream.WriteBuffer(ColorDepthByte, SizeOf(Byte));
 
+    // Brightness
     FileStream.Seek(StrToInt('$0C'), soBeginning);
-    BrightnessByte:=StrToInt('$' + IntToHex(TrackBar1.Position, 2));
+    //BrightnessByte:=StrToInt('$' + IntToHex(BrightnessTB.Position, 2));
+    BrightnessByte:=BrightnessTB.Position;
     FileStream.WriteBuffer(BrightnessByte, SizeOf(Byte));
   finally
     FileStream.Free;
@@ -207,9 +220,9 @@ begin
   Close;
 end;
 
-procedure TMain.TrackBar1Change(Sender: TObject);
+procedure TMain.BrightnessTBChange(Sender: TObject);
 begin
-  BrightnessValLbl.Caption:=IntToStr(TrackBar1.Position);
+  BrightnessValLbl.Caption:=IntToStr(BrightnessTB.Position);
 end;
 
 procedure TMain.FormClose(Sender: TObject; var Action: TCloseAction);

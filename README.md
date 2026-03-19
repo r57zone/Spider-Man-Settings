@@ -3,7 +3,7 @@
 ← Choose language | Выберите язык
 
 # Spider Man Settings
-The application allows to change the game resolution, color depth and brightness in the game Spider-Man (2001). Widescreen resolutions are supported. Compatibility tested with US, RU (Fargus, 7wolf) versions.
+Utility for changing resolution, color depth, and brightness in the game Spider-Man (2001). Widescreen resolutions are supported. Compatibility tested with US, RU (Fargus, 7wolf) versions.
 
 ## Setup
 1. Close the game if it is open.
@@ -13,7 +13,7 @@ The application allows to change the game resolution, color depth and brightness
 
 ## Screenshots
 ![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/e9964b91-798e-400d-b4da-7f47ad10607e)
-[![](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/8e13f775-92bd-4f0f-b880-1cf60ed20a65)](https://github.com/r57zone/Spider-Man-Settings/assets/9499881/f0233845-e2f3-49a8-b8dd-90fd184c2cdf)
+[![](https://github.com/user-attachments/assets/5a4f4283-2645-48fd-aa1a-130f4b3967c2)](https://github.com/user-attachments/assets/226e16f2-53a1-4ed0-84d5-2288e9606869)
 
 ## Download
 >Version for Windows XP, Vista, 7, 8.1, 10, 11.
