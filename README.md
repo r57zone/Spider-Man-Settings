@@ -3,9 +3,9 @@
 ← Choose language | Выберите язык
 
 # Spider Man Settings
-Configuration utility for Spider-Man (2001). It allows you to change the screen resolution, aspect ratio, color depth, and brightness, as well as enable additional enhancements, including Xbox controller support, vibration, a frame rate limiter, and other features.
+Utility for configuring Spider-Man (2001), allowing you to adjust the screen resolution, aspect ratio, color depth, and brightness, as well as enable additional features, including Xbox controller support, vibration, frame rate limiting, and more.
 
-Widescreen resolutions are supported, including `16:9`, `21:9`, and `32:9`. Compatibility has been tested with the English version of the game, as well as Russian translations by 7Volk and Fargus.
+Widescreen resolutions are supported, including `16:9`, `21:9`, and `32:9`. Compatibility has been tested with the English version of the game, as well as Russian translations by 7Wolf and Fargus.
 
 # Features and Improvements
 - **Widescreen resolutions.** Fixed object culling beyond the screen boundaries and corrected the scaling of objects using the projection characteristic of the PS1 version of the game, such as Venom's tentacles.
@@ -17,7 +17,7 @@ Widescreen resolutions are supported, including `16:9`, `21:9`, and `32:9`. Comp
 ### Widescreen Resolutions
 | 16:9 | 21:9 | 32:9 |
 |:---:|:---:|:---:|
-| [![Game 16:9](https://github.com/user-attachments/assets/db313d0e-6dec-4bff-9bc0-124ef56fb34a)](https://github.com/user-attachments/assets/f9943754-a979-4ba9-9a05-f4b1fab8de27) | [![Game 21:9](https://github.com/user-attachments/assets/ed5790ec-c9c9-42ad-8b18-ff4341edeea1)](https://github.com/user-attachments/assets/5520bf1a-1b8b-41fb-a84e-a243a7805c78) | [![Game 32:9](https://github.com/user-attachments/assets/6584dc5c-f6f3-41ab-b5ca-ae05b8a060e7)](https://github.com/user-attachments/assets/43365aa9-df2c-4ac0-b03e-a62c470911cc) |
+| [![Game 16:9](https://github.com/user-attachments/assets/c08af20f-3da0-4013-80f6-e14e97a13c12)](https://github.com/user-attachments/assets/fa6d5cfe-5554-4bba-990a-691bc40145d6) | [![Game 21:9](https://github.com/user-attachments/assets/f41dfa3e-2163-4c84-b9f7-dc568be5cb5c)](https://github.com/user-attachments/assets/d03ef5c5-7ea1-4c88-b55c-0acc1b1760af) | [![Game 32:9](https://github.com/user-attachments/assets/e8c77e49-2ff0-4e32-aa81-235a1c626fab)](https://github.com/user-attachments/assets/08a1a7c4-13c4-4dd2-a53f-412a3c61fdde) |
 | [![Menu 16:9](https://github.com/user-attachments/assets/c6635254-0cc3-45fb-b80e-bcb8f9ac692e)](https://github.com/user-attachments/assets/07426e3c-46b7-48da-99e3-6d02212d6164) | [![Menu 21:9](https://github.com/user-attachments/assets/c699b0cf-2b28-4364-a785-3a53e4653fa0)](https://github.com/user-attachments/assets/d4301a3b-862f-4f48-9863-63ae105fc601) | [![Menu 32:9](https://github.com/user-attachments/assets/b7ad696a-8364-45b0-8726-2e3f2a0149bf)](https://github.com/user-attachments/assets/c2c12629-3a9b-4217-b3e5-f4d06bd178d5) |
 
 ### HUD Layouts
@@ -42,14 +42,11 @@ Widescreen resolutions are supported, including `16:9`, `21:9`, and `32:9`. Comp
 
 **[Download](https://github.com/r57zone/Spider-Man-Settings/releases)**
 
-## Credits
-Many thanks to [Hemanshu Shekhar](https://community.pcgamingwiki.com/profile/9470-hemanshu-shekhar/) for finding the addresses to change the resolution and aspect ratio.
-
 ## Known Issues
 
 | Level | Screenshot | Description | Workaround |
 |:---|:---:|:---|:---|
-| Race to the Bugle | [![Screenshot](https://github.com/user-attachments/assets/ad9c6cb4-1c0d-4081-843a-2c2e8dfb0e52)](https://github.com/user-attachments/assets/131e50cf-7fa0-4c6a-a6ae-052c47615992) | If you skip the cutscene, Scorpion may immediately appear inside the Daily Bugle offices, causing the mission to fail. | Do not skip the cutscene. |
+| Race to the Bugle | [![Screenshot](https://github.com/user-attachments/assets/ad9c6cb4-1c0d-4081-843a-2c2e8dfb0e52)](https://github.com/user-attachments/assets/131e50cf-7fa0-4c6a-a6ae-052c47615992) | If you skip the cutscene, Scorpion may immediately appear inside the Daily Bugle offices, causing the mission to fail. | Don't skip the cutscene. |
 | Scale the Girders | [![Screenshot](https://github.com/user-attachments/assets/d4b17195-9dfc-4825-a67a-658c1bfce156)](https://github.com/user-attachments/assets/4118bb99-29e1-4c60-a8b6-c8eeb85aa806) | Spider-Man is supposed to shoot a web and jump forward from a crate, but sometimes falls instead. | Press the web-shoot button again or limit the frame rate to 24 FPS for this section. |
 | Catch Venom | [![Screenshot](https://github.com/user-attachments/assets/60032c4f-d122-49ef-875a-42dfc00146d5)](https://github.com/user-attachments/assets/9d17a192-393f-409c-8f59-dbb23437e104) | Spider-Man is supposed to jump onto a wall, but sometimes fails to do so. | Try acting more quickly or limit the frame rate to 24 FPS for this section. |
 | Spidey vs. Mysterio! | [![Screenshot](https://github.com/user-attachments/assets/b2945ede-2254-495b-9a44-2eca81f9d638)](https://github.com/user-attachments/assets/12e41003-26e5-4d81-8565-ed140029adcb) | During the second phase of the Mysterio fight, he fires lasers too quickly, making them difficult to dodge. | On Medium difficulty, limit the frame rate to 24 FPS for this section. |

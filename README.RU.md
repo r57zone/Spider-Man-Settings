@@ -2,7 +2,7 @@
 [![RU](https://user-images.githubusercontent.com/9499881/27683795-5b0fbac6-5cd8-11e7-929c-057833e01fb1.png)](https://github.com/r57zone/Spider-Man-Settings/blob/master/README.RU.md)
 
 # Spider Man Settings
-Утилита для настройки Spider-Man (2001). Позволяет изменять разрешение экрана, соотношение сторон, глубину цвета и яркость, а также включать дополнительные улучшения: поддержку Xbox-контроллеров, вибрацию, ограничение частоты кадров и другие функции.
+Утилита для настройки Spider-Man (2001), позволяющая изменять разрешение экрана, соотношение сторон, глубину цвета и яркость, а также активировать дополнительные возможности, включая поддержку Xbox-контроллеров, вибрацию, ограничение частоты кадров и другие функции.
 
 Поддерживаются широкоформатные разрешения, включая `16:9`, `21:9` и `32:9`. Совместимость проверена с английской версией игры, а также с русскими переводами от 7Волк и Фаргус.
 
@@ -16,7 +16,7 @@
 ### Широкоформатные разрешения
 | 16:9 | 21:9 | 32:9 |
 |:---:|:---:|:---:|
-| [![Игра 16:9](https://github.com/user-attachments/assets/db313d0e-6dec-4bff-9bc0-124ef56fb34a)](https://github.com/user-attachments/assets/f9943754-a979-4ba9-9a05-f4b1fab8de27) | [![Игра 21:9](https://github.com/user-attachments/assets/ed5790ec-c9c9-42ad-8b18-ff4341edeea1)](https://github.com/user-attachments/assets/5520bf1a-1b8b-41fb-a84e-a243a7805c78) | [![Игра 32:9](https://github.com/user-attachments/assets/6584dc5c-f6f3-41ab-b5ca-ae05b8a060e7)](https://github.com/user-attachments/assets/43365aa9-df2c-4ac0-b03e-a62c470911cc) |
+| [![Игра 16:9](https://github.com/user-attachments/assets/c08af20f-3da0-4013-80f6-e14e97a13c12)](https://github.com/user-attachments/assets/fa6d5cfe-5554-4bba-990a-691bc40145d6) | [![Игра 21:9](https://github.com/user-attachments/assets/f41dfa3e-2163-4c84-b9f7-dc568be5cb5c)](https://github.com/user-attachments/assets/d03ef5c5-7ea1-4c88-b55c-0acc1b1760af) | [![Игра 32:9](https://github.com/user-attachments/assets/e8c77e49-2ff0-4e32-aa81-235a1c626fab)](https://github.com/user-attachments/assets/08a1a7c4-13c4-4dd2-a53f-412a3c61fdde) |
 | [![Меню 16:9](https://github.com/user-attachments/assets/c6635254-0cc3-45fb-b80e-bcb8f9ac692e)](https://github.com/user-attachments/assets/07426e3c-46b7-48da-99e3-6d02212d6164) | [![Меню 21:9](https://github.com/user-attachments/assets/c699b0cf-2b28-4364-a785-3a53e4653fa0)](https://github.com/user-attachments/assets/d4301a3b-862f-4f48-9863-63ae105fc601) | [![Меню 32:9](https://github.com/user-attachments/assets/b7ad696a-8364-45b0-8726-2e3f2a0149bf)](https://github.com/user-attachments/assets/c2c12629-3a9b-4217-b3e5-f4d06bd178d5) |
 
 ### Варианты интерфейса
