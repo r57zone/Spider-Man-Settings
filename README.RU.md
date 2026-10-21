@@ -53,7 +53,7 @@
 ## Благодарности
 - [Hemanshu Shekhar](https://community.pcgamingwiki.com/profile/9470-hemanshu-shekhar/) - за найденные адреса в памяти игры для изменения FOV и соотношения сторон.
 - [GTRemyLeceau (GTTeancum)](https://github.com/GTTeancum/SpideyPS1recomp) - за рекомпиляцию версии игры для PS1 и широкоформатные улучшения.
-- [Elisha Riedlinger (elishacloud)](https://github.com/elishacloud) - за DxWrapper.
+- [Elisha Riedlinger (elishacloud)](https://github.com/elishacloud/dxwrapper) - за DxWrapper.
 - [Jose Silva (krystalgamer)](https://github.com/krystalgamer/spidey-tools) - за утилиту для изменения сохранений.
 - [Claude AI](https://claude.ai) - за помощь в остальных улучшениях.
 
