@@ -13,6 +13,7 @@ Widescreen resolutions are supported, including `16:9`, `21:9`, and `32:9`. Comp
 - **Automatic save loading.** The first save slot is automatically loaded when the game starts.
 - **Improved controller support.** Added DInput-to-XInput call translation using [DInputAdvance](https://github.com/r57zone/DInputAdvance), including vibration support. Implemented vibration when taking damage. Fixed the confirm button in menus and controller input during cutscenes.
 - **Audio fix.** Fixed background music stuttering in the Scorpion level.
+- **Save Editor.** Added an editor that allows you to change the current level, unlock costumes, and select the active costume.
 
 ### Widescreen Resolutions
 | 16:9 | 21:9 | 32:9 |
