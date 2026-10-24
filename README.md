@@ -37,7 +37,7 @@ Widescreen resolutions are supported, including `16:9`, `21:9`, and `32:9`. Comp
 3. Run `Spider-Man Settings` and select the desired options.
 4. Click `Apply`. The application will patch the necessary game files.
 5. In the game's properties, set `Compatibility Mode` to `Windows XP Service Pack 2` to fix audio issues.
-6. (Optional) To prevent the main menu from stretching, you can enable GPU Scaling and Integer Scaling in the Nvidia/AMD/Intel control panel.
+6. (Optional) To prevent the main menu from stretching, you can enable GPU scaling and integer scaling in the Nvidia/AMD/Intel control panel. For AMD and Intel, also select the "Preserve aspect ratio" scaling mode.
 
 
 The `LB/L1` button on the gamepad emulates pressing the `A` key on the keyboard, allowing you to enter a save name.
