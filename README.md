@@ -32,7 +32,7 @@ Widescreen resolutions are supported, including `16:9`, `21:9`, and `32:9`. Comp
 [![Spider-Man Settings](https://github.com/user-attachments/assets/91d73b1d-6b0b-40c1-b5a2-5978208f4087)](https://github.com/user-attachments/assets/8a193920-ef0e-497d-8b07-1394c1b67f30) [![Spider-Man Settings](https://github.com/user-attachments/assets/0bb63b82-163f-40e7-b39c-9048c7576ae0)](https://github.com/user-attachments/assets/bd7dfb75-089d-4155-bb2c-925e678d00f8)
 
 ## Installation
-1. Close the game if it is running.
+1. (Optional) Extract the NoCD patch into the game folder.
 2. Download the [archive](https://github.com/r57zone/Spider-Man-Settings/releases) and extract its entire contents into the game folder.
 3. Run `Spider-Man Settings` and select the desired options.
 4. Click `Apply`. The application will patch the necessary game files.
@@ -55,6 +55,8 @@ The `LB/L1` button on the gamepad emulates pressing the `A` key on the keyboard,
 | Scale the Girders | [![Screenshot](https://github.com/user-attachments/assets/d4b17195-9dfc-4825-a67a-658c1bfce156)](https://github.com/user-attachments/assets/4118bb99-29e1-4c60-a8b6-c8eeb85aa806) | Spider-Man is supposed to shoot a web and jump forward from a crate, but sometimes falls instead. | Press the web-shoot button again or limit the frame rate to 24 FPS for this section. |
 | Catch Venom | [![Screenshot](https://github.com/user-attachments/assets/60032c4f-d122-49ef-875a-42dfc00146d5)](https://github.com/user-attachments/assets/9d17a192-393f-409c-8f59-dbb23437e104) | Spider-Man is supposed to jump onto a wall, but sometimes fails to do so. | Try acting more quickly or limit the frame rate to 24 FPS for this section. |
 | Spidey vs. Mysterio! | [![Screenshot](https://github.com/user-attachments/assets/b2945ede-2254-495b-9a44-2eca81f9d638)](https://github.com/user-attachments/assets/12e41003-26e5-4d81-8565-ed140029adcb) | During the second phase of the Mysterio fight, he fires lasers too quickly, making them difficult to dodge. | On Medium difficulty, limit the frame rate to 24 FPS for this section. |
+
+If the game asks you to insert the disc again after applying the patch, delete "SpideyPC.exe.bak" from the game folder, copy the NoCD patch into the folder, and reapply the settings in Spider-Man Settings.
 
 ## Credits
 - [Hemanshu Shekhar](https://community.pcgamingwiki.com/profile/9470-hemanshu-shekhar/) — for finding the in-game memory addresses used to modify the FOV and aspect ratio.
