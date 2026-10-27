@@ -11,7 +11,7 @@ Widescreen resolutions are supported, including `16:9`, `21:9`, and `32:9`. Comp
 - **Widescreen resolutions.** Fixed object culling beyond the screen boundaries and corrected the scaling of objects using the projection characteristic of the PS1 version of the game, such as Venom's tentacles.
 - **HUD improvements.** Added two HUD layouts: an Improved layout with optimally positioned elements and a classic layout that closely resembles the game's original design.
 - **Automatic save loading.** The first save slot is automatically loaded when the game starts.
-- **Improved controller support.** Added DInput-to-XInput call translation using [DInputAdvance](https://github.com/r57zone/DInputAdvance), including vibration support. Implemented vibration when taking damage. Fixed the confirm button in menus and controller input during cutscenes.
+- **Improved controller support.** Added DInput-to-XInput call translation using [DInputAdvance](https://github.com/r57zone/DInputAdvance), including vibration support. Implemented vibration when taking damage. Fixed the confirm button in menus and controller input during cutscenes. Added invisibility mode activation for the "Spider-Man Unlimited" suit (aim + punch).
 - **Audio fix.** Fixed background music stuttering in the Scorpion level.
 - **Save Editor.** Added an editor that allows you to change the current level, unlock costumes, and select the active costume.
 

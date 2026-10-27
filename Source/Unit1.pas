@@ -32,7 +32,7 @@ type
     OriginalInterfaceRB: TRadioButton;
     RestoreBtn: TButton;
     ControllerCB: TGroupBox;
-    FixGamepadConfirmCB: TCheckBox;
+    FixControllerButtonsCB: TCheckBox;
     XboxControllerSupportCB: TCheckBox;
     DamageVibrationCB: TCheckBox;
     SaveBtn: TButton;
@@ -90,8 +90,8 @@ end;
 
 procedure TMain.AboutBtnClick(Sender: TObject);
 begin
-  Application.MessageBox(PChar(Caption + ' 1.3' + #13#10 +
-  IDS_LAST_UPDATE + ' 21.10.26' + #13#10#13#10 +
+  Application.MessageBox(PChar(Caption + ' 1.3.1' + #13#10 +
+  IDS_LAST_UPDATE + ' 27.10.26' + #13#10#13#10 +
   IDS_SPECIAL_THANKS + #13#10#13#10 +
   'https://r57zone.github.io' + #13#10 +
   'r57zone@gmail.com'), PChar(IDS_ABOUT), MB_ICONINFORMATION);
@@ -155,21 +155,27 @@ begin
 
     GameCB.Caption:='Игра';
     ImprovedInterfaceRB.Caption:='Улучшенный интерфейс (рекомендуется)';
+    ImprovedInterfaceRB.Hint:='Некоторые элементы интерфейса выровнены по центру.';
     ClassicInterfaceRB.Caption:='Классический интерфейс';
+    ClassicInterfaceRB.Hint:='Некоторые элементы интерфейса растягиваются на весь экран, как в оригинальной игре';
     OriginalInterfaceRB.Caption:='Оригинальный интерфейс (растянутый)';
     MenuFixCB.Caption:='Исправление меню';
+    MenuFixCB.Hint:='Исправляет пропорции меню и отображение правой стороны рамки.';
     AutoLoadCB.Caption:='Автозагрузка первого сохранения';
 
     ControllerCB.Caption:='Контроллер';
 
     CompatibilityGB.Caption:='Совместимость';
     SoundFixCB.Caption:='Исправление заикания фоновой музыки';
+    SoundFixCB.Hint:='Устраняет заикание фоновой музыки на уровне со Скорпионом.';
     DXWrapperCB.Caption:='Совместимость DirectX (DxWrapper)';
     FPSLimit30RB.Caption:='30 FPS (бывают проблемы)';
     FPSLimit24RB.Caption:='24 FPS (полностью проходимо)';
     WindowedModeCB.Caption:='Оконный режим';
     XboxControllerSupportCB.Caption:='Поддержка Xbox контроллеров';
-    FixGamepadConfirmCB.Caption:='Исправить кнопку подтверждения геймпада';
+    XboxControllerSupportCB.Hint:='Кнопка "LB/L1" на геймпаде эмулирует нажатие клавиши "A" на клавиатуре, позволяя ввести название сохранения.';
+    FixControllerButtonsCB.Caption:='Исправить кнопки геймпада';
+    FixControllerButtonsCB.Hint:='Исправляет кнопку подтверждения и пропуск роликов, а также позволяет включать невидимость в костюме "Спайди без границ" (прицел + удар)';
     DamageVibrationCB.Caption:='Вибрация от урона';
     VibrationIntensityLbl.Caption:='Сила вибрации:';
 
@@ -442,6 +448,23 @@ const
   // Одиночные байты: скип роликов и экран «Enter» на кнопке подтверждения вместо Start
   JoyMovieSkipFileOffset = $70851;  // 00 -> 01 (mask 0x7000000 -> 0x7010000)
   JoyEnterScreenFileOffset = $A1894; // 04 -> 01 (mask 0x40010 -> 0x10010)
+
+  // ===== Invisibility (Spidey Unlimited) with a gamepad / Невидимость (Spidey Unlimited) на геймпаде =====
+  // The player update ($4B13F0) tests the keyboard scancodes of actions 0x40 and 0x100 only; we test the gamepad buttons too
+  // Функция игрока ($4B13F0) проверяет только сканкоды клавиатуры действий 0x40 и 0x100; добавляем кнопки геймпада
+  InvisSiteVA = $4B141D;
+  InvisSiteEndVA = $4B1479;
+  InvisSiteOrig: array[0..10] of Byte = ($50, $6A, $40, $C6, $86, $E4, $0A, $00, $00, $01, $E8);
+  InvisNoVA = $4B14BB;             // "not pressed" branch / ветка «не нажато»
+  InvisCostumeVA = $5559DC;        // current costume / текущий костюм
+  InvisCostumeId = 5;              // Spidey Unlimited
+  InvisAttackKeySlotVA = $5683CC;  // key of action 0x40 (the pad button is at +$70) / клавиша действия 0x40 (кнопка геймпада +$70)
+  InvisAimKeySlotVA = $5683DC;     // key of action 0x100 / клавиша действия 0x100
+  KeyEdgeCheckVA = $50A650;        // key was just pressed / клавиша только что нажата
+  PadEdgeCheckVA = $50A680;        // pad button was just pressed / кнопка только что нажата
+  InvisCave1VA = $402171;          // 15 bytes of alignment NOPs / 15 байт NOP выравнивания
+  InvisCave2VA = $402181;          // 15 bytes
+  InvisCave3VA = $402191;          // 15 bytes
 
   // ===== Autoload save / Автозагрузка сохранения =====
   // Hook: the first instruction of the pad poll function 0x505720 ("mov eax,[66129C]") is replaced with
@@ -921,6 +944,54 @@ var
     CaveEnd;
   end;
 
+  // Invisibility with a gamepad - Spidey Unlimited costume (aim + punch) / Невидимость на геймпаде - костюм Спайди без границ (прицел + удар)
+  procedure ApplyPadInvisibilityFix;
+  var
+    InvisCurrent: array[0..10] of Byte;
+  begin
+    FileStream.Seek(InvisSiteVA - $400000, soBeginning);
+    FileStream.ReadBuffer(InvisCurrent, SizeOf(InvisCurrent));
+    if not CompareMem(@InvisCurrent, @InvisSiteOrig, SizeOf(InvisSiteOrig)) then Exit; // only the original exe / только оригинальный exe
+
+    // Cave 1: keyboard check, ebp = address of the key slot / проверка клавиши, ebp = адрес ячейки клавиши
+    CaveBegin(InvisCave1VA);
+    CaveBytes([$6A, $01, $FF, $75, $00]);           // push 1 / push [ebp]
+    CaveBranch($E8, KeyEdgeCheckVA);                // call key check
+    CaveBranch($E9, InvisCave2VA);
+    CaveEnd;
+    // Cave 2: pressed -> return, otherwise go on to the pad / нажата -> выход, иначе проверяем геймпад
+    CaveBegin(InvisCave2VA);
+    CaveBytes([$83, $C4, $08, $85, $C0, $74, $01, $C3]); // add esp,8 / test eax,eax / je +1 / ret
+    CaveBranch($E9, InvisCave3VA);
+    CaveEnd;
+    // Cave 3: the pad button of the same action is at [ebp+$70] / кнопка геймпада того же действия - [ebp+$70]
+    CaveBegin(InvisCave3VA);
+    CaveBytes([$6A, $01, $FF, $75, $70]);           // push 1 / push [ebp+70h]
+    CaveBranch($E8, PadEdgeCheckVA);
+    CaveBytes([$83, $C4, $08, $C3]);                // add esp,8 / ret
+    CaveEnd;
+
+    // The site: costume 5 and both actions pressed (keyboard or pad) -> go on, otherwise to the "no" branch
+    // Место: костюм 5 и оба действия нажаты (клавиатура или геймпад) -> дальше, иначе в ветку «нет»
+    CaveBegin(InvisSiteVA);
+    CaveBytes([$C6, $86, $E4, $0A, $00, $00, $01]); // mov byte ptr [esi+0AE4h], 1 (the original instruction / исходная инструкция)
+    CaveBytes([$33, $ED]);                          // xor ebp, ebp
+    CaveBytes([$83, $3D]); CaveInt32(InvisCostumeVA); CaveBytes([InvisCostumeId]); // cmp dword ptr [costume], 5
+    CaveBytes([$0F, $85]); CaveInt32(InvisNoVA - (CaveStartVA + CaveLength + 4));  // jne no
+    CaveBytes([$BD]); CaveInt32(InvisAttackKeySlotVA); // mov ebp, attack slot
+    CaveBranch($E8, InvisCave1VA);
+    CaveBytes([$85, $C0, $74, 21]);                 // test eax,eax / je Z
+    CaveBytes([$BD]); CaveInt32(InvisAimKeySlotVA);    // mov ebp, aim slot
+    CaveBranch($E8, InvisCave1VA);
+    CaveBytes([$85, $C0, $74, 7]);                  // test eax,eax / je Z
+    CaveBytes([$33, $ED]);                          // xor ebp, ebp
+    CaveBranch($E9, InvisSiteEndVA);                // both pressed / оба нажаты
+    CaveBytes([$33, $ED]);                          // Z: xor ebp, ebp
+    CaveBranch($E9, InvisNoVA);
+    while CaveLength < InvisSiteEndVA - InvisSiteVA do CaveBytes([$90]);
+    CaveEnd;
+  end;
+
   // Stub of a 2D builder: "add [esp+ArgOffset], M" (shift X), the replaced instructions, jmp back; then the hook
   // Заглушка 2D-построителя: "add [esp+ArgOffset], M" (сдвиг X), замещённые инструкции, jmp назад; затем хук
   procedure WriteMenuStub(StubVA, SiteVA: Integer; ArgOffset: Byte; const Displaced: array of Byte);
@@ -1162,11 +1233,12 @@ begin
     end;
 
     // JFix gamepad confirm button / Исправить кнопку подтверждения на геймпаде
-    if FixGamepadConfirmCB.Checked then begin
+    if FixControllerButtonsCB.Checked then begin
       WriteBytes(JoyCaveFileOffset, JoyCave);
       WriteBytes(JoyMenuCallFileOffset, JoyMenuCallNew);
       WriteByte(JoyMovieSkipFileOffset, $01);
       WriteByte(JoyEnterScreenFileOffset, $01);
+      ApplyPadInvisibilityFix;
     end;
 
     // Autoload the save at start / Автозагрузка сохранения при старте

@@ -134,8 +134,11 @@ object Main: TMain
       Top = 24
       Width = 249
       Height = 17
+      Hint = 'Fixes background music stuttering in the Scorpion level.'
       Caption = 'Fix for background music stuttering'
       Checked = True
+      ParentShowHint = False
+      ShowHint = True
       State = cbChecked
       TabOrder = 2
     end
@@ -223,8 +226,11 @@ object Main: TMain
       Top = 24
       Width = 249
       Height = 17
+      Hint = 'Some UI elements are now centered.'
       Caption = 'Improved Interface (recommended)'
       Checked = True
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
       TabStop = True
     end
@@ -233,7 +239,12 @@ object Main: TMain
       Top = 48
       Width = 249
       Height = 17
+      Hint = 
+        'Some UI elements stretch across the entire screen, as in the ori' +
+        'ginal game.'
       Caption = 'Classic Interface'
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 1
     end
     object OriginalInterfaceRB: TRadioButton
@@ -259,8 +270,13 @@ object Main: TMain
       Top = 96
       Width = 249
       Height = 17
+      Hint = 
+        'Fixes the menu proportions and the rendering of the right side o' +
+        'f the frame.'
       Caption = 'Menu fix'
       Checked = True
+      ParentShowHint = False
+      ShowHint = True
       State = cbChecked
       TabOrder = 4
     end
@@ -286,13 +302,18 @@ object Main: TMain
       Height = 13
       Caption = '100%'
     end
-    object FixGamepadConfirmCB: TCheckBox
+    object FixControllerButtonsCB: TCheckBox
       Left = 8
       Top = 48
       Width = 249
       Height = 17
-      Caption = 'Fix controller confirm button'
+      Hint = 
+        'Fixes the confirm button and cutscene skipping, and lets you act' +
+        'ivate invisibility in the Spidey Unlimited costume (aim + punch)'
+      Caption = 'Fix controller buttons'
       Checked = True
+      ParentShowHint = False
+      ShowHint = True
       State = cbChecked
       TabOrder = 1
     end
@@ -301,8 +322,13 @@ object Main: TMain
       Top = 24
       Width = 249
       Height = 17
+      Hint = 
+        'The gamepad'#39's "LB/L1" button simulates pressing the "A" key on t' +
+        'he keyboard, allowing you to enter a save name.'
       Caption = 'Xbox controller support'
       Checked = True
+      ParentShowHint = False
+      ShowHint = True
       State = cbChecked
       TabOrder = 0
       OnClick = XboxControllerSupportCBClick
